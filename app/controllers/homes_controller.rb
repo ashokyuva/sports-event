@@ -13,8 +13,6 @@ class HomesController < ApplicationController
 
   def all_events
     @event = Ticket.where('user_id = ?',current_user.id)
-    p current_user.id
-    p @event
   end
 
   def price_list
@@ -23,6 +21,7 @@ class HomesController < ApplicationController
   
   def payment_complete
     p "payment complete"
+    @payment = Payment.new
     @ticket = Ticket.find(params[:id])
     @at = 1250 if @ticket.is_cricket
     @at = 1150 if @ticket.is_football

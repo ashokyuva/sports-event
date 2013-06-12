@@ -21,9 +21,9 @@ $(document).ready(function(){
   $(function() {
     $( ".datepicker" ).datepicker({
       dateFormat: "dd-mm-yy",
-      showOn: "button",
-      buttonImage: "/assets/datepicker_calendar_icon.gif",
-      buttonImageOnly: true
+      //showOn: "button",
+      //buttonImage: "/assets/datepicker_calendar_icon.gif",
+      //buttonImageOnly: true
     });
   });
 

@@ -1,8 +1,14 @@
 class PaymentsController < ApplicationController
   before_filter :authenticate_user!
 
+  def new
+    p "new action"
+    @payment = Payment.new
+    render :json => { success: @payment }
+  end
   
   def create
+    p "create action"
     @payment = Payment.new(params[:payment])
       if @payment.save
         @tic = params[:payment][:ticket_id]
