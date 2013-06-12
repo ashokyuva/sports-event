@@ -20,6 +20,29 @@ class HomesController < ApplicationController
   def price_list
   
   end
+  
+  def payment_complete
+    p "payment complete"
+    @ticket = Ticket.find(params[:id])
+    @at = 1250 if @ticket.is_cricket
+    @at = 1150 if @ticket.is_football
+    @at = 1050 if @ticket.is_volleyball
+    @at = 950 if @ticket.is_tennis
+    @at = 1020 if @ticket.is_hockey
+    @amount = @at * 58.45
+    if current_user.gender == 'male'
+      @gen = 0
+    elsif current_user.gender == 'female'
+      @gen = 5
+    end
+    @gender = @gen
+    @savings = @amount * @gender / 100;
+    if @gender == 0
+      @total = @amount;
+    else
+      @total = @amount - @savings;
+    end
+  end
 
   def todays_event
     @today = current_user.tickets.where("enddate = ?",Date.today)
@@ -99,12 +122,9 @@ class HomesController < ApplicationController
   # DELETE /homes/1
   # DELETE /homes/1.json
   def destroy
-    @home = Home.find(params[:id])
-    @home.destroy
-
-    respond_to do |format|
-      format.html { redirect_to homes_url }
-      format.json { head :no_content }
-    end
+    @ticket = Ticket.find(params[:id])
+    @ticket.destroy
+    @ticket.payment.destroy
+    render :json => { success: "deleted" }
   end
 end

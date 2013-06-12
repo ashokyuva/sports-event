@@ -1,0 +1,58 @@
+:css
+  .form-horizontal .controls {
+  margin-bottom: 15px;
+  }
+  .form-horizontal .controls a.steps1{
+  background: url(/assets/one.jpg) no-repeat;
+  width: 2px;
+  height: 17px;
+  background-size: 25px 25px;
+  }
+  .form-horizontal .controls a.steps2{
+  background: url(/assets/two.jpg) no-repeat;
+  width: 2px;
+  height: 17px;
+  background-size: 25px 25px;  
+  }
+:css
+  #new_payment{
+  display:block;
+  margin-top:30px;
+  }
+= form_for Payment.new, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :"Amount", :class => 'control-label'
+    .controls
+      = f.text_field :amount, :class => 'text_field', :disabled => true, :value => @amount
+      %p{:style=>"color:#666;font-size:10px;"}
+        = "Event price $#{@at} convert to doller"
+    = f.label :"Discount", :class => 'control-label'
+    .controls
+      = f.text_field :discount, :class => 'text_field', :disabled => true,:value=> @gender
+      = "%"
+      %p{:style=>"color:#666;font-size:10px;"}
+        = "User gets a 5% discount on the ticket if gender is female"
+    = f.label :"Total", :class => 'control-label'
+    .controls
+      = f.text_field :total, :class => 'text_field', :disabled => true,:value=> @total
+    = f.label :"Card Type", :class => 'control-label'
+    .controls
+      = f.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]], :class => 'text_field'
+    = f.label :"Card Number", :class => 'control-label'
+    .controls
+      = f.text_field :card_num, :class => 'text_field'
+    = f.label :"CCV Number", :class => 'control-label'
+    .controls
+      = f.text_field :ccv, :class => 'text_field'
+    = f.label :"Month", :class => 'control-label'
+    .controls
+      = select_month(Date.today,:field_name => 'month')
+    = f.label :"Year", :class => 'control-label'
+    .controls
+      = select_year(Date.today, :start_year => Date.today.year, :end_year => 8.year.from_now.year,:field_name => 'year')
+    = f.hidden_field :ticket_id,:class => "ticket_value",:value=>@ticket.id
+  .form-actions
+    = f.submit "Save Payment", :class => 'btn btn-primary'
+    = link_to "Cancel", homes_path, :class => 'btn', :id=> "payment_alert"
+    %p.foo1
+      test    

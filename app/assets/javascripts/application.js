@@ -71,7 +71,7 @@ $(document).ready(function(){
           $('#payment_total').val(total);
           console.log(total);
           $('.ticket_value').val(data.success);
-          $(element).parent().find('p.foo').text('Details save. Please continue with step 2').css('color','green').fadeIn().delay(3000).fadeOut();
+          $(element).parent().find('p.foo').text('Details save. Please continue with step two').css('color','green').fadeIn().delay(3000).fadeOut();
           $('#new_payment').delay(3000).slideDown();
           $(element).delay(3000).fadeOut();
         }
@@ -81,17 +81,36 @@ $(document).ready(function(){
 
   //Payment action
   $('#new_payment').submit(function() {
+      var element = this;
       $.ajax({
         url: $(this).attr('action'),
         type: $(this).attr('method'),
         data: $(this).serialize(),
         success: function(data) {
           console.log(data.success);
-
+          $(element).parent().find('p.foo1').text(data.success).css('color','green').fadeIn();
+          //window.location.href = "/price_list";
+          setTimeout(function() { window.location.href = "/all_events"; }, 2000 );
         }
       });
     return false;
   });
+  
+  $('.delete-action').click(function() {
+      var element = this;
+      var id = $(this).attr('id');
+      $.ajax({
+        url: '/homes/'+id,
+        type: 'DELETE',
+        success: function(data) {
+          $(element).parent().parent().fadeOut(1000);
+          console.log("delete success");
+          //window.location.href = "/price_list";
+          //$(element).parent().parent().slideUp('slow');
+        }
+      });
+    return false;
+  });  
 
 });
 

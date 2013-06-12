@@ -23,5 +23,6 @@
             =  "Event not completed"
           - else
             = "Event completed"
-        %td= link_to "Show Event", home_path(:id=>e.id), :class => 'btn btn-primary'      
+        %td= link_to "Show Event", home_path(:id=>e.id), :class => 'btn btn-primary'
+        %td= link_to "Delete", home_path(e.id), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger delete-action', :id=> e.id      
 

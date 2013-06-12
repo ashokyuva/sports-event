@@ -11,6 +11,7 @@ Event::Application.routes.draw do
   match "price_list" => "homes#price_list"
   match "event_expires" => "homes#event_expires"
   match "todays_event" => "homes#todays_event"
+  match "payment_complete" => "homes#payment_complete"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
