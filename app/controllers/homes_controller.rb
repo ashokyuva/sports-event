@@ -42,6 +42,15 @@ class HomesController < ApplicationController
     else
       @total = @amount - @savings;
     end
+    @date = Date.today
+    @months = []
+    (0..11).each do |m|
+    @months << [@date.next_month(m).strftime("%B"), @date.next_month(m).strftime("%B")]
+    end
+    @year = []
+    (0..11).each do |m|
+    @year << [@date.next_year(m).strftime("%Y"), @date.next_year(m).strftime("%Y")]
+    end    
   end
 
   def todays_event
