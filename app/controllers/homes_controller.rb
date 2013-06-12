@@ -75,9 +75,14 @@ class HomesController < ApplicationController
       @gen = 5
     end
     @gender = @gen
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @home }
+    @date = Date.today
+    @months = []
+    (0..11).each do |m|
+    @months << [@date.next_month(m).strftime("%B"), @date.next_month(m).strftime("%B")]
+    end
+    @year = []
+    (0..11).each do |m|
+    @year << [@date.next_year(m).strftime("%Y"), @date.next_year(m).strftime("%Y")]
     end
   end
 

@@ -68,10 +68,10 @@
       = f.text_field :ccv, :class => 'text_field'
     = f.label :"Month", :class => 'control-label'
     .controls
-      = select_month(Date.today,:field_name => 'month')
+      = f.select :month, options_for_select(@months)
     = f.label :"Year", :class => 'control-label'
     .controls
-      = select_year(Date.today, :start_year => Date.today.year, :end_year => 8.year.from_now.year,:field_name => 'year')
+      = f.select :year, options_for_select(@year)
     = f.hidden_field :ticket_id,:class => "ticket_value"
   .form-actions
     = f.submit "Save Payment", :class => 'btn btn-primary'
