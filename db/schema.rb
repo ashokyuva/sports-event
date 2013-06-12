@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611122857) do
+ActiveRecord::Schema.define(:version => 20130612130323) do
 
   create_table "homes", :force => true do |t|
     t.string   "name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20130611122857) do
 
   create_table "payments", :force => true do |t|
     t.string   "card_type"
-    t.integer  "card_num"
+    t.string   "card_num"
     t.integer  "ccv"
     t.string   "month"
     t.integer  "year"
