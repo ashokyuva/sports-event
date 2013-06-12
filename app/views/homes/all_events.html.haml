@@ -1,0 +1,27 @@
+- model_class = Home
+.page-header
+  %h2=t '.title', :default => "All Events"
+%table.table.table-striped
+  %thead
+    %tr
+      %th= "Events"
+      %th= "Payment Status"
+      %th= "Event Status"
+      %th= "Action"
+  %tbody
+    - @event.each do |e|
+      %tr
+        %td=  e.event_name
+        %td
+          - if e.payment
+            =  "Payment completed"
+          - else
+            = "Payment not completed"
+        %td
+          - @a = e.enddate
+          - if Date.today <= @a 
+            =  "Event not completed"
+          - else
+            = "Event completed"
+        %td= link_to "Show Event", home_path(:id=>e.id), :class => 'btn btn-primary'      
+

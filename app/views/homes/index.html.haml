@@ -1,0 +1,31 @@
+- model_class = Home
+.page-header
+  %h1=t '.title', :default => "Events"
+%table.table.table-striped
+  %thead
+    %tr
+      %th= "Events"
+      %th= "Pricings"
+      %th= "Action"
+  %tbody
+    %tr
+      %td=  "Cricket"
+      %td=  "$1250"
+      %td= link_to "Add Event", new_home_path(:user=>current_user,:type=>"is_cricket",:price=>'$1250',:gender=>current_user.gender,:name=>"Cricket"), :class => 'btn btn-primary'      
+    %tr
+      %td=  "Foot Ball"
+      %td=  "$1150"
+      %td= link_to "Add Event", new_home_path(:user=>current_user,:type=>"is_football",:price=>'$1150',:gender=>current_user.gender,:name=>"Foot Ball"), :class => 'btn btn-primary'
+    %tr
+      %td=  "Volley Ball"
+      %td=  "$1050"
+      %td= link_to "Add Event", new_home_path(:user=>current_user,:type=>"is_volleyball",:price=>'$1050',:gender=>current_user.gender,:name=>"Volley Ball"), :class => 'btn btn-primary'
+    %tr
+      %td=  "Tennis"
+      %td=  "$950"
+      %td= link_to "Add Event", new_home_path(:user=>current_user,:type=>"is_tennis",:price=>'$950',:gender=>current_user.gender,:name=>"Tennis"), :class => 'btn btn-primary'
+    %tr
+      %td=  "Hockey"
+      %td=  "$1020"
+      %td= link_to "Add Event", new_home_path(:user=>current_user,:type=>"is_hockey",:price=>'$1020',:gender=>current_user.gender,:name=>"Hockey"), :class => 'btn btn-primary'
+
