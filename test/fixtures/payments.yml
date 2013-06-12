@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  card_type: MyString
+  card_num: 1
+  ccv: 1
+  month: MyString
+  year: 1
+  ticket_id: 1
+
+two:
+  card_type: MyString
+  card_num: 1
+  ccv: 1
+  month: MyString
+  year: 1
+  ticket_id: 1

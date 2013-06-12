@@ -1,0 +1,17 @@
+- model_class = Home
+.page-header
+  %h2=t '.title', :default => "All Events"
+%table.table.table-striped
+  %thead
+    %tr
+      %th= "Events"
+      %th= "Event Status"
+      %th= "Action"
+  %tbody
+    - @expire.each do |e|
+      %tr
+        %td=  e.event_name
+        %td
+          =  "Event completed"
+        %td= link_to "Show Event", home_path(:id=>e.id), :class => 'btn btn-primary'      
+
