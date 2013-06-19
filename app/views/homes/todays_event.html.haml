@@ -12,6 +12,16 @@
       %tr
         %td=  e.event_name
         %td
-          =  "Play now"
+          - if e.event_name == "Tennis"
+            %a{:href=>"http://www.gamedesign.jp/flash/tennis/tennis.html"}
+          - elsif e.event_name == "Hockey"
+            %a{:href=>"http://www.candystand.com/play/hockey-games"}
+          - elsif e.event_name == "Cricket"
+            %a{:href=>"http://www.cricketgames.me"}
+          - elsif e.event_name == "Volley Ball"
+            %a{:href=>"http://volleyball-games.shegame.com/play/25539/Volleyball-Game"}
+          - elsif e.event_name == "Foot Ball"
+            %a{:href=>"http://www.candystand.com/play/football-games"}
+            =  "Play now"
         %td= link_to "Show Event", home_path(:id=>e.id), :class => 'btn btn-primary'      
 
