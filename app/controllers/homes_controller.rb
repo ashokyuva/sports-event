@@ -135,9 +135,16 @@ class HomesController < ApplicationController
   # DELETE /homes/1
   # DELETE /homes/1.json
   def destroy
-    @ticket = Ticket.find(params[:id])
-    @ticket.destroy
-    @ticket.payment.destroy
-    render :json => { success: "deleted" }
+    if params[:delete].present?
+      @ticket = Ticket.find(params[:id])
+      @ticket.destroy
+      @ticket.payment.destroy
+      render :json => { success: "deleted no ajax" }
+    else
+      @ticket = Ticket.find(params[:id])
+      @ticket.destroy
+      @ticket.payment.destroy
+      render :json => { success: "deleted" }
+    end
   end
 end

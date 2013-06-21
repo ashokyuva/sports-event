@@ -18,6 +18,16 @@
 
 $(document).ready(function(){
 
+  //Payment not complete action
+  $('.payment_not').click(function() {
+      var element = this;
+      var data = $(this).parent().find('p.complete_first a').attr('href');
+      $(this).parent().find('p.complete_first a').fadeIn();
+      setTimeout(function() { window.location.href = data; }, 20000 );
+  });
+
+
+
   $(function() {
     $( ".datepicker" ).datepicker({
       dateFormat: "dd-mm-yy",
@@ -99,14 +109,22 @@ $(document).ready(function(){
   $('.delete-action').click(function() {
       var element = this;
       var id = $(this).attr('id');
+      if($('.ajax-delete').length > 0){
+        var data = '/homes/'+id+'/?delete=true'
+      }else{
+        var data = '/homes/'+id
+      }
       $.ajax({
-        url: '/homes/'+id,
+        url: data,
         type: 'DELETE',
         success: function(data) {
-          $(element).parent().parent().fadeOut(1000);
+          if (data.success == 'deleted'){
+          $(element).parent().parent().fadeOut(500);
           console.log("delete success");
-          //window.location.href = "/price_list";
+          }else if(data.success == 'deleted no ajax'){
+            window.location.href = "/all_events";
           //$(element).parent().parent().slideUp('slow');
+          }
         }
       });
     return false;

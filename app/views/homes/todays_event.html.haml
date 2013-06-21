@@ -1,3 +1,20 @@
+:css
+  .complete_first a{
+  color:red;
+  font-size:12px;
+  display:none;
+  font-style: italic;
+  position: absolute;
+  }
+  .text-deco{
+  color: #0088cc;
+  margin: 0;
+  }
+  .text-deco:hover{
+  color: #005580;
+  text-decoration: underline;
+  cursor:pointer;
+  }
 - model_class = Home
 .page-header
   %h2=t '.title', :default => "All Events"
@@ -12,20 +29,27 @@
       %tr
         %td=  e.event_name
         %td
-          - if e.event_name == "Tennis"
-            %a{:href=>"http://www.gamedesign.jp/flash/tennis/tennis.html", :target => "_blank"}
-              =  "Play now"
-          - elsif e.event_name == "Hockey"
-            %a{:href=>"http://www.candystand.com/play/hockey-games", :target => "_blank"}
-              =  "Play now"
-          - elsif e.event_name == "Cricket"
-            %a{:href=>"http://www.cricketgames.me", :target => "_blank"}
-              =  "Play now"
-          - elsif e.event_name == "Volley Ball"
-            %a{:href=>"http://volleyball-games.shegame.com/play/25539/Volleyball-Game", :target => "_blank"}
-              =  "Play now"
-          - elsif e.event_name == "Foot Ball"
-            %a{:href=>"http://www.candystand.com/play/football-games", :target => "_blank"}
-              =  "Play now"
+          - unless e.is_payment
+            %p.text-deco.payment_not
+              = "Play Now"
+            %p.complete_first
+              %a{:href=>"/payment_complete?id=#{e.id}"}
+                = "click to complete your Payment"
+          - else
+            - if e.event_name == "Tennis"
+              %a{:href=>"http://www.gamedesign.jp/flash/tennis/tennis.html", :target => "_blank"}
+                =  "Play now"
+            - elsif e.event_name == "Hockey"
+              %a{:href=>"http://www.candystand.com/play/hockey-games", :target => "_blank"}
+                =  "Play now"
+            - elsif e.event_name == "Cricket"
+              %a{:href=>"http://www.cricketgames.me", :target => "_blank"}
+                =  "Play now"
+            - elsif e.event_name == "Volley Ball"
+              %a{:href=>"http://volleyball-games.shegame.com/play/25539/Volleyball-Game", :target => "_blank"}
+                =  "Play now"
+            - elsif e.event_name == "Foot Ball"
+              %a{:href=>"http://www.candystand.com/play/football-games", :target => "_blank"}
+                =  "Play now"
         %td= link_to "Show Event", home_path(:id=>e.id), :class => 'btn btn-primary'      
 
