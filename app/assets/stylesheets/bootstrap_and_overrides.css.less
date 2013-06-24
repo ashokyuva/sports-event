@@ -1,7 +1,19 @@
 @import "twitter/bootstrap/bootstrap";
 
-body { padding-top: 60px;background: beige; }
-
+body { padding-top: 60px;background: url(/assets/whitedbackground.jpg);color: aqua; }
+.table-striped tbody > tr:nth-child(odd) > td, .table-striped tbody > tr:nth-child(odd) > th{
+background:none;
+}
+.table th, .table td{
+border:none;
+}
+a {
+color: chartreuse;
+text-decoration: none;
+}
+.form-actions{
+background:none;
+}
 @import "twitter/bootstrap/responsive";
 
 // Set the correct sprite paths
