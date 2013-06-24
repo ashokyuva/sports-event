@@ -24,13 +24,13 @@
     = f.label :"Amount", :class => 'control-label'
     .controls
       = f.text_field :amount, :class => 'text_field',:readonly => true, :value => @amount
-      %p{:style=>"color:#666;font-size:10px;"}
+      %p{:style=>"color:white;font-size:10px;"}
         = "Event price $#{@at} convert to doller"
     = f.label :"Discount", :class => 'control-label'
     .controls
       = f.text_field :discount, :class => 'text_field',:readonly => true,:value=> @gender
       = "%"
-      %p{:style=>"color:#666;font-size:10px;"}
+      %p{:style=>"color:white;font-size:10px;"}
         = "User gets a 5% discount on the ticket if gender is female"
     = f.label :"Total", :class => 'control-label'
     .controls
