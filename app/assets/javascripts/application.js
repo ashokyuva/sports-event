@@ -86,7 +86,7 @@ $(document).ready(function(){
           $('#payment_total').val(total);
           console.log(total);
           $('.ticket_value').val(data.success);
-          $(element).parent().find('p.foo').text('Details save. Please continue with step two').css('color','green').fadeIn().delay(3000).fadeOut();
+          $(element).parent().find('p.foo').text('Details save. Please continue with step two').css('color','yellow').fadeIn().delay(3000).fadeOut();
           $('#new_payment').delay(3000).slideDown();
           $(element).delay(3000).fadeOut();
         }
@@ -103,7 +103,7 @@ $(document).ready(function(){
         data: $(this).serialize(),
         success: function(data) {
           console.log(data.success);
-          $(element).parent().find('p.foo1').text(data.success).css('color','green').fadeIn();
+          $(element).parent().find('p.foo1').text(data.success).css('color','yellow').fadeIn();
           //window.location.href = "/price_list";
           setTimeout(function() { window.location.href = "/all_events"; }, 2000 );
         }
