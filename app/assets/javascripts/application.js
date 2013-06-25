@@ -18,6 +18,11 @@
 
 $(document).ready(function(){
 
+  if($('.nav-collapse').length > 0){
+  
+    var str = $('ul.nav li a').text();
+  }
+
   //Payment not complete action
   $('.payment_not').click(function() {
       var element = this;
