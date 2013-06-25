@@ -102,3 +102,6 @@
  h1,h2{
  font-family:Conv_Crimes Times Six !important;
  }
+ .navbar .brand{
+ color: darkred !important;
+ }
